@@ -3,7 +3,7 @@
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
 ## How does the filter work?
-The input will seach for a match in name and parent name of each service.
+The input will search for a match in name and parent name of each service.
 
 ## Available Scripts
 
