@@ -118,6 +118,11 @@ const Results = styled.ul`
                 background: ${theme.color.neutralGrayLightest};
             }
         }
+
+        em {
+            font-style: initial;
+            font-weight: ${theme.font.weightBold};
+        }
     `}
 `;
 

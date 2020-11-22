@@ -14,12 +14,13 @@ import {
 
 const View = ({
     displayResults,
+    inputValue,
+    isFetching,
+    getHighlightedItem,
     label,
     placeholder,
     results,
     searchResults,
-    translations,
-    isFetching,
 }) => (
     <Wrapper>
         <Label>{label}</Label>
@@ -29,18 +30,15 @@ const View = ({
                 placeholder={placeholder}
                 onChange={(event) => searchResults(event.target.value)}
             />
-
             <Icon as={ isFetching ? Spinner : SearchIcon }/>
-            {displayResults && ( <Results>
-                {results.map((item, index) => (
-                    <li key={index}>
-                        {item.name}
-                        {item.parent_name !== null && (
-                            <span>{`${translations.in} ${item.parent_name}`}</span>
-                        )}
-                    </li>
-                ))}
-            </Results>)}
+            {displayResults && (
+                <Results>
+                    {results.map((item, index) => (
+                        <li key={index}
+                            dangerouslySetInnerHTML={{ __html: getHighlightedItem(inputValue, item) }} />
+                    ))}
+                </Results>
+            )}
         </InputWrapper>
     </Wrapper>
 );

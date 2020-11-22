@@ -3,44 +3,67 @@ import React, { Component } from 'react';
 import View from './LiveInputSearch.view.jsx';
 
 export default class LiveInputSearch extends Component {
-    constructor(props) {
+    constructor() {
         super();
 
         this.state = {
             results: [],
             isFetching: false,
+            inputValue: null,
         };
 
         this.searchResults = this.searchResults.bind(this);
+        this.getHighlightedItem = this.getHighlightedItem.bind(this);
     }
 
     isResultsEmpty() {
         return this.state.results.length > 0;
     }
 
-    isValueIncludeInText(value, text) {
-        return text ? text.toLowerCase().indexOf(value.toLowerCase()) !== -1 : false;
+    getHighlightedItem(value, item) {
+        const year = `<span>${this.props.translations.from} ${item.Year}</span>`;
+        let title = item.Title;
+        const regex = new RegExp(`\\b${value}\\b`, 'i');
+        const matches = title.match(regex);
+
+        if (matches) {
+            matches.forEach(m => (title = title.replace(m, `<em class="position">${m}</em>`)));
+        }
+
+        return `${title} ${year}`;
     }
 
     searchResults(value) {
         this.setState({
-            isFetching: true,
-        });
+            results: [],
+            inputValue: '',
+        })
 
-        let resultsToDisplay = [];
+        if(value !== '' && value.length > 2) {
+            this.setState({
+                isFetching: true,
+            });
 
-        if(value !== '' && value.length > 1) {
-            const availableResults = this.props.services;
+            const DATA_SERVICE_URL = `http://www.omdbapi.com/?apikey=b36c7394&s=${value}`;
 
-            resultsToDisplay = availableResults.filter( item => (
-                this.isValueIncludeInText(value, item.name) || this.isValueIncludeInText(value, item.parent_name)
-            ));
-        };
-
-        this.setState({
-            results: resultsToDisplay,
-            isFetching: false,
-        });
+            fetch(DATA_SERVICE_URL)
+                .then(response => response.json())
+                .then(result => {
+                    this.setState({
+                        results: result.Search ? result.Search : [],
+                        isFetching: false,
+                        inputValue: value,
+                    })
+                    console.log('*** result ***');
+                    console.log(result);
+                })
+                .catch(e => {
+                    console.log(e);
+                    this.setState({
+                        isFetching: false
+                    });
+                });
+        }
     }
 
     render() {
@@ -50,6 +73,7 @@ export default class LiveInputSearch extends Component {
                 {...this.state}
                 displayResults={!!this.isResultsEmpty()}
                 searchResults={this.searchResults}
+                getHighlightedItem={this.getHighlightedItem}
             />
         );
     }
