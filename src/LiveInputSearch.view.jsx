@@ -1,8 +1,7 @@
 import React from 'react';
 
 import {ReactComponent as SearchIcon} from './assets/icons/search.svg';
-import {ReactComponent as LoaderIcon} from './assets/icons/loader.svg';
-// import Spinner from './Spinner.jsx';
+import Spinner from './Spinner.jsx';
 
 import {
     Icon,
@@ -31,7 +30,7 @@ const View = ({
                 onChange={(event) => searchResults(event.target.value)}
             />
 
-            <Icon as={ isFetching ? LoaderIcon : SearchIcon }/>
+            <Icon as={ isFetching ? Spinner : SearchIcon }/>
             {displayResults && ( <Results>
                 {results.map((item, index) => (
                     <li key={index}>
@@ -43,7 +42,6 @@ const View = ({
                 ))}
             </Results>)}
         </InputWrapper>
-        {/* <Input type='text' loading='true'/> */}
     </Wrapper>
 );
 

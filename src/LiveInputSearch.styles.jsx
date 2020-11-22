@@ -9,7 +9,7 @@ const InputWrapper = styled.div`
 
     ${({ theme }) => css`
         @media ${theme.device.mobile} {
-            width: max-content;
+            width: 460px;
         }
     `}
 `;
@@ -26,20 +26,36 @@ const Input = styled.input`
         z-index: 1;
         margin-bottom: -3px;
 
-        @media ${theme.device.mobile} {
-            width: 460px;
+        ::placeholder {
+            color: ${theme.color.neutralGray};
         }
 
         &:hover {
             background: ${theme.color.neutralGrayLightest};
             border-color: ${theme.color.neutralGray};
             color: ${theme.color.neutralGrayDarker};
+
+            ::placeholder {
+                color: ${theme.color.neutralGrayDarker};
+            }
+
+            & ~ ${Icon} {
+                path {
+                    stroke: ${theme.color.neutralGrayDarker};
+                }
+            }
         }
 
         &:focus {
             background: ${theme.color.neutralGrayLightest};
             border-color: ${theme.color.brandPrimary};
             box-shadow: ${theme.boxShadow};
+
+            & ~ ${Icon} {
+                path {
+                    stroke: ${theme.color.brandPrimary};
+                }
+            }
         }
 
         ${loading && css`
@@ -65,13 +81,16 @@ const Label = styled.span`
 
 const Icon = styled.svg`
     ${({ theme }) => css`
-        color: ${theme.color.brandPrimary};
         position: absolute;
         top: 11px;
         right: 16px;
         height: 24px;
         width: 24px;
         z-index: 1;
+
+        path {
+            stroke: ${theme.color.neutralGrayDarker};
+        }
     `}
 `;
 
@@ -106,13 +125,6 @@ const Wrapper = styled.div`
     display: flex;
     flex-direction: column;
 `;
-
-Icon.displayName = 'Icon';
-Input.displayName = 'Input';
-InputWrapper.displayName = 'InputWrapper';
-Label.displayName = 'Label';
-Results.displayName = 'Results';
-Wrapper.displayName = 'Wrapper';
 
 export {
     Icon,
