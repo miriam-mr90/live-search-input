@@ -1,0 +1,124 @@
+import styled, { css } from "styled-components";
+
+const InputWrapper = styled.div`
+    position: relative;
+    max-width: 100%;
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+
+    ${({ theme }) => css`
+        @media ${theme.device.mobile} {
+            width: max-content;
+        }
+    `}
+`;
+
+const Input = styled.input`
+    ${({ theme, loading, typing }) => css`
+        background: ${theme.color.white};
+        color: ${theme.color.neutralGray};
+        border: 1px solid ${theme.color.neutralGrayLight};
+        border-radius: ${theme.radius};
+        padding: 14px calc(16px + 24px) 14px 16px;
+        width: 100%;
+        height: 48px;
+        z-index: 1;
+        margin-bottom: -3px;
+
+        @media ${theme.device.mobile} {
+            width: 460px;
+        }
+
+        &:hover {
+            background: ${theme.color.neutralGrayLightest};
+            border-color: ${theme.color.neutralGray};
+            color: ${theme.color.neutralGrayDarker};
+        }
+
+        &:focus {
+            background: ${theme.color.neutralGrayLightest};
+            border-color: ${theme.color.brandPrimary};
+            box-shadow: ${theme.boxShadow};
+        }
+
+        ${loading && css`
+            background: ${theme.color.neutralGrayLightest};
+            border-color: ${theme.color.brandPrimary};
+            box-shadow: ${theme.boxShadow};
+            color: ${theme.color.neutralGrayDark};
+        `}
+
+        ${typing && css`
+            color: ${theme.color.neutralGrayDark};
+        `}
+    `}
+`;
+
+const Label = styled.span`
+    ${({ theme }) => css`
+        color: ${theme.color.neutralGrayDarkest};
+        font-weight: ${theme.font.weightBold};
+        margin-bottom: 8px;
+    `}
+`;
+
+const Icon = styled.svg`
+    ${({ theme }) => css`
+        color: ${theme.color.brandPrimary};
+        position: absolute;
+        top: 11px;
+        right: 16px;
+        height: 24px;
+        width: 24px;
+        z-index: 1;
+    `}
+`;
+
+const Results = styled.ul`
+    ${({ theme }) => css`
+        background: ${theme.color.white};
+        border: 1px solid ${theme.color.neutralGrayLight};
+        border-radius: 0 0 ${theme.radius} ${theme.radius};
+        color: ${theme.color.neutralGrayDark};
+        display: flex;
+        flex-direction: column;
+        padding-top: 3px;
+        max-height: 176px;
+        overflow-y: auto;
+
+        li {
+            padding: 10px 16px;
+
+            span {
+                color: ${theme.color.neutralGray};
+                margin-left: 4px;
+            }
+
+            &:hover {
+                background: ${theme.color.neutralGrayLightest};
+            }
+        }
+    `}
+`;
+
+const Wrapper = styled.div`
+    display: flex;
+    flex-direction: column;
+`;
+
+Icon.displayName = 'Icon';
+Input.displayName = 'Input';
+InputWrapper.displayName = 'InputWrapper';
+Label.displayName = 'Label';
+Results.displayName = 'Results';
+Wrapper.displayName = 'Wrapper';
+
+export {
+    Icon,
+    Input,
+    InputWrapper,
+    Label,
+    Results,
+    Wrapper,
+};
