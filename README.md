@@ -1,21 +1,7 @@
 # Live Input Search
 
 ## Component previews
-Default state:
-
-![alt tag](public/screenshots/default.png)
-
-Focus state:
-
-![alt tag](public/screenshots/focus.png)
-
-Searching state:
-
-![alt tag](public/screenshots/searching.png)
-
-Search result state:
-
-![alt tag](public/screenshots/search_results.png)
+![alt tag](public/screenshot_examples.png)
 
 ## How does the filter work?
 I use the [OMDb API](http://www.omdbapi.com/) which is an open movie database.
