@@ -1,7 +1,7 @@
 # Live Input Search
 
 ## Component previews
-![alt tag](public/screenshot_examples.png =160x)
+![alt tag](public/screenshot_examples.png)
 
 ## How does the filter work?
 I use the [OMDb API](http://www.omdbapi.com/) which is an open movie database.
