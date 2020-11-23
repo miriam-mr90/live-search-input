@@ -1,11 +1,10 @@
 # Live Input Search
 
-## Component previews
-![alt tag](public/screenshot_examples.png)
-
-## How does the filter work?
 I use the [OMDb API](http://www.omdbapi.com/) which is an open movie database.
 The input will search for a match in the movie name of the API Search results.
+
+## Component previews
+![alt tag](public/screenshot_examples.png)
 
 ## Search examples:
 - Wars
@@ -13,7 +12,7 @@ The input will search for a match in the movie name of the API Search results.
 - Vampire
 - Bat
 
-## To do
+## To Do
 - Improve the regular expression in `getHighlightedItem` method
 - Implement tests
 - Implement linter to JS and Styles
@@ -29,4 +28,3 @@ Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
 
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
-
