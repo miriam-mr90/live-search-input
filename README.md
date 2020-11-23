@@ -1,7 +1,7 @@
 # Live Input Search
 
 ## Component previews
-![alt tag](public/screenshot_examples.png)
+![alt tag](public/screenshot_examples.png =160x)
 
 ## How does the filter work?
 I use the [OMDb API](http://www.omdbapi.com/) which is an open movie database.
@@ -14,7 +14,9 @@ The input will search for a match in the movie name of the API Search results.
 - Bat
 
 ## To do
-
+- Improve the regular expression in `getHighlightedItem` method
+- Implement tests
+- Implement linter to JS and Styles
 
 ## Available Scripts
 
