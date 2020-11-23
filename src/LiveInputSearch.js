@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import PropTypes from 'prop-types';
 
 import View from './LiveInputSearch.view.jsx';
 
@@ -78,3 +79,15 @@ export default class LiveInputSearch extends Component {
         );
     }
 }
+
+LiveInputSearch.propTypes = {
+    label: PropTypes.string,
+    placeholder: PropTypes.string,
+    translations: PropTypes.object,
+};
+
+LiveInputSearch.defaultProps = {
+    label: '',
+    placeholder: '',
+    translations: {},
+};
