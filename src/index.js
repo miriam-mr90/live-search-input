@@ -4,7 +4,7 @@ import { ThemeProvider } from 'styled-components';
 
 import './assets/styles/Reset.css';
 import GlobalAppStyles from './GlobalAppStyles.jsx';
-import LiveInputSearch from './LiveInputSearch';
+import LiveInputSearch from './components/live_input_search/LiveInputSearch';
 
 import fixtures from './assets/fixtures';
 import theme from './theme';

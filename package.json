@@ -2,7 +2,6 @@
   "name": "live-search-input",
   "version": "0.1.0",
   "private": true,
-
   "home": "https://miriam-mr90.github.io/live-search-input/",
   "main": "src/index.js",
   "dependencies": {

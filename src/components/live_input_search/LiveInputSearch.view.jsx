@@ -1,7 +1,7 @@
 import React from 'react';
 
-import {ReactComponent as SearchIcon} from './assets/icons/search.svg';
-import Spinner from './Spinner.jsx';
+import {ReactComponent as SearchIcon} from '../../assets/icons/search.svg';
+import Spinner from '../spinner/Spinner.jsx';
 
 import {
     Icon,
